@@ -1,8 +1,9 @@
 ### IntelliJ IDEA ###
-out/
+# out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .kotlin
+
 
 ### Eclipse ###
 .apt_generated
@@ -28,3 +29,12 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Garder les libs dans le repo
+!libs/
+!libs/*.jar
+
+# build / output
+/out/
+# ignore IntelliJ files
+/.idea/
