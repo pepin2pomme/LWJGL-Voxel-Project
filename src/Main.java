@@ -52,7 +52,7 @@ public class Main {
 
         //------------- INITIALISATION JEU
 
-        world = new World(10,10,10);
+        world = new World(10,20,10);
         world.initWorld();
 
         cam = new Camera();
