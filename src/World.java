@@ -1,26 +1,23 @@
 public class World {
 
-    private final Block[][][] tab;
+    private final Chunk[][] chunks;
     private final int largeur;
+    private final int longueur;
     private final int hauteur;
-    private final int profondeur;
 
-    public World(int largeur, int hauteur, int profondeur) {
+    public World(int largeur, int longueur, int hauteur) {
         this.largeur = largeur;
+        this.longueur = longueur;
         this.hauteur = hauteur;
-        this.profondeur = profondeur;
-        this.tab = new Block[largeur][hauteur][profondeur];
+        this.chunks = new Chunk[largeur][longueur];
     }
 
     public void initWorld(){
         for(int x = 0; x < this.largeur; x++){
-            for(int y = 0; y < this.hauteur; y++){
-                for(int z = 0; z < this.profondeur; z++){
-                    if(y<=10){
-                        tab[x][y][z] = new Block(x,y,z,1);
-                    }else{
-                        tab[x][y][z] = null;
-                    }
+            for(int y = 0; y < this.longueur; y++){
+                if(this.chunks[x][y] == null){
+                    this.chunks[x][y] = new Chunk(x,y,hauteur);
+                    this.chunks[x][y].initChunk();
                 }
             }
         }
@@ -28,9 +25,9 @@ public class World {
 
     public void drawWorld(){
         for(int x = 0; x < this.largeur; x++){
-            for(int y = 0; y < this.hauteur; y++){
-                for(int z = 0; z < this.profondeur; z++){
-                    if(tab[x][y][z] != null) tab[x][y][z].draw();
+            for(int y = 0; y < this.longueur; y++){
+                if(this.chunks[x][y] != null){
+                    this.chunks[x][y].drawChunk();
                 }
             }
         }

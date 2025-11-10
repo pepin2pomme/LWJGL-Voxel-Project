@@ -1,6 +1,6 @@
 import org.lwjgl.*;
-    import org.lwjgl.opengl.*;
-
+import org.lwjgl.opengl.*;
+import org.lwjgl.glfw.GLFWVidMode;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.*;
@@ -29,8 +29,10 @@ public class Main {
     private void init() {
         if (!glfwInit()) throw new IllegalStateException("Impossible d'initialiser GLFW");
 
-        window = glfwCreateWindow(800, 600, "Hello LWJGL!", NULL, NULL);
-        if (window == NULL) throw new RuntimeException("Échec de création de fenêtre");
+        GLFWVidMode videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+        window = glfwCreateWindow(videoMode.width(), videoMode.height(),
+                "Hello LWJGL!", glfwGetPrimaryMonitor(), NULL);
+
 
         glfwMakeContextCurrent(window);
         glfwSwapInterval(1);
@@ -46,17 +48,17 @@ public class Main {
         // Projection perspective
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        float aspect = 800f / 600f;
-        gluPerspectiveLWJGL3(70, aspect, 0.1f, 100f);
+        float aspect = (float) videoMode.width() / (float) videoMode.height();
+        gluPerspectiveLWJGL3(90, aspect, 0.1f, 100f);
         glMatrixMode(GL_MODELVIEW);
 
         //------------- INITIALISATION JEU
 
-        world = new World(10,20,10);
+        world = new World(2,2,50);
         world.initWorld();
 
         cam = new Camera();
-        cam.setY(world.getHauteur()+2);
+        cam.setY(12);
 
     }
 
