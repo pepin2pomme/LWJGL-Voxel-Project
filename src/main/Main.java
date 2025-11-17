@@ -1,3 +1,7 @@
+package main;
+
+import main.tech.Camera;
+import main.world.World;
 import org.lwjgl.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.glfw.GLFWVidMode;
@@ -54,7 +58,7 @@ public class Main {
 
         //------------- INITIALISATION JEU
 
-        world = new World(2,2,50);
+        world = new World(1,1,50);
         world.initWorld();
 
         cam = new Camera();

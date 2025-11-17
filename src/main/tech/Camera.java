@@ -1,4 +1,6 @@
-    import static org.lwjgl.opengl.GL11.*;
+package main.tech;
+
+import static org.lwjgl.opengl.GL11.*;
     import static org.lwjgl.glfw.GLFW.*;
 
     public class Camera {
