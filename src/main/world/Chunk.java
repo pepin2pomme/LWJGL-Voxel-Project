@@ -46,4 +46,8 @@ public class Chunk {
 
         glPopMatrix();
     }
+
+    public Block getBlock(int x, int y, int z){
+        return tab[x][y][z];
+    }
 }
